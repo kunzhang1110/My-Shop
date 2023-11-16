@@ -108,7 +108,7 @@ app.UseHttpsRedirection();
 app.UseCors(opt =>
 {
     opt
-    .WithOrigins("https://icy-surf-3108.fly.dev", "http://localhost:3000")
+    .WithOrigins("http://localhost:3000", "http://localhost:3001")
     .AllowAnyHeader()
     .AllowAnyMethod()
     .AllowCredentials();

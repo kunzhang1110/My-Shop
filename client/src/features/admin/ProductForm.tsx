@@ -42,6 +42,7 @@ export default function ProductForm({ product, cancelEdit }: Props) {
   async function handleSubmitData(data: FieldValues) {
     try {
       let response: Product;
+      data.price *= 100; //convert to cents
       if (product) {
         response = await agent.Admin.updateProduct(data);
       } else {

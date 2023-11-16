@@ -12,7 +12,7 @@ import {
 import agent from "../../app/api/agent";
 import { useState } from "react";
 
-export default function AboutPage() {
+export default function TestPage() {
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
 
   const getValidationError = () => {

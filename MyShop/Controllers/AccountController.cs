@@ -50,6 +50,7 @@ namespace MyShop.Controllers
 
             return new UserDto
             {
+                UserName = user.UserName,
                 Email = user.Email,
                 Token = await _tokenService.GenerateToken(user),
                 Basket = anonymousBasket != null ?
@@ -90,6 +91,7 @@ namespace MyShop.Controllers
 
             return new UserDto
             {
+                UserName = user.UserName,
                 Email = user.Email,
                 Token = await _tokenService.GenerateToken(user)
             };

@@ -1,5 +1,8 @@
-﻿namespace MyShop.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace MyShop.Entities
 {
+    [Table("MyShopProducts")]
     public class Product
     {
         public int Id { get; set; }

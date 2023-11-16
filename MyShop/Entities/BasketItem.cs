@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyShop.Entities
 {
-    [Table("BasketItems")]
+    [Table("MyShopBasketItems")]
     public class BasketItem
     {
         public int Id { get; set; }

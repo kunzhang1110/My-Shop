@@ -14,8 +14,8 @@ const initialState: AccountState = {
   user: null,
 };
 
-export const signInUser = createAsyncThunk<User, FieldValues>(
-  "account/signInUser",
+export const logInUser = createAsyncThunk<User, FieldValues>(
+  "account/logInUser",
   async (data, thunkAPI) => {
     try {
       const { basket, ...user } = await agent.Account.login(data);
@@ -78,7 +78,7 @@ export const accountSlice = createSlice({
       router.navigate("/");
     });
     builder.addMatcher(
-      isAnyOf(signInUser.fulfilled, fetchCurrentUser.fulfilled),
+      isAnyOf(logInUser.fulfilled, fetchCurrentUser.fulfilled),
       (state, action) => {
         let claims = JSON.parse(atob(action.payload.token.split(".")[1]));
         let roles =
@@ -91,7 +91,7 @@ export const accountSlice = createSlice({
         };
       }
     );
-    builder.addMatcher(isAnyOf(signInUser.rejected), (state, action) => {
+    builder.addMatcher(isAnyOf(logInUser.rejected), (state, action) => {
       throw action.payload;
     });
   },

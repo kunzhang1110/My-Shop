@@ -15,7 +15,6 @@ import SignedInMenu from "./SignedInMenu";
 
 const midLinks = [
   { title: "catalog", path: "/catalog" },
-  { title: "about", path: "/about" },
   { title: "contact", path: "/contact" },
 ];
 
@@ -74,9 +73,14 @@ export default function Header() {
             </ListItem>
           ))}
           {user && user.roles?.includes("Admin") && (
-            <ListItem component={NavLink} to={"/inventory"} sx={navStyles}>
-              INVENTORY
-            </ListItem>
+            <>
+              <ListItem component={NavLink} to={"/inventory"} sx={navStyles}>
+                INVENTORY
+              </ListItem>
+              <ListItem component={NavLink} to={"/test"} sx={navStyles}>
+                TEST
+              </ListItem>
+            </>
           )}
         </List>
 

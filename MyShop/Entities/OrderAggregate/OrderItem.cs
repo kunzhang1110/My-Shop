@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace MyShop.Entities.OrderAggregate
 {
+    [Table("MyShopOrderItems")]
     public class OrderItem
     {
         public int Id { get; set; }

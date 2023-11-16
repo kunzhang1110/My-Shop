@@ -12,7 +12,7 @@ import {
 import { FieldValues, useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/store/configureStore";
-import { signInUser } from "./accountSlice";
+import { logInUser } from "./accountSlice";
 
 export default function Login() {
   const dispatch = useAppDispatch();
@@ -29,7 +29,7 @@ export default function Login() {
 
   async function submitForm(data: FieldValues) {
     try {
-      await dispatch(signInUser(data));
+      await dispatch(logInUser(data));
       navigate(location.state?.from || "/catalog");
     } catch (error) {
       console.log(error);

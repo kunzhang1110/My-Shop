@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace MyShop.data.Migrations
+namespace MyShop.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -55,7 +55,7 @@ namespace MyShop.data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Baskets",
+                name: "MyShopBaskets",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -66,11 +66,11 @@ namespace MyShop.data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Baskets", x => x.Id);
+                    table.PrimaryKey("PK_MyShopBaskets", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "MyShopOrders",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -91,11 +91,11 @@ namespace MyShop.data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_MyShopOrders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "MyShopProducts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -111,7 +111,7 @@ namespace MyShop.data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_MyShopProducts", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -221,7 +221,7 @@ namespace MyShop.data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "UserAddress",
+                name: "MyShopUserAddress",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false),
@@ -235,9 +235,9 @@ namespace MyShop.data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserAddress", x => x.Id);
+                    table.PrimaryKey("PK_MyShopUserAddress", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_UserAddress_AspNetUsers_Id",
+                        name: "FK_MyShopUserAddress_AspNetUsers_Id",
                         column: x => x.Id,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
@@ -245,7 +245,7 @@ namespace MyShop.data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "OrderItem",
+                name: "MyShopOrderItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -259,16 +259,16 @@ namespace MyShop.data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItem", x => x.Id);
+                    table.PrimaryKey("PK_MyShopOrderItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItem_Orders_OrderId",
+                        name: "FK_MyShopOrderItems_MyShopOrders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Orders",
+                        principalTable: "MyShopOrders",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "BasketItems",
+                name: "MyShopBasketItems",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -279,17 +279,17 @@ namespace MyShop.data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BasketItems", x => x.Id);
+                    table.PrimaryKey("PK_MyShopBasketItems", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BasketItems_Baskets_BasketId",
+                        name: "FK_MyShopBasketItems_MyShopBaskets_BasketId",
                         column: x => x.BasketId,
-                        principalTable: "Baskets",
+                        principalTable: "MyShopBaskets",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BasketItems_Products_ProductId",
+                        name: "FK_MyShopBasketItems_MyShopProducts_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Products",
+                        principalTable: "MyShopProducts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -299,8 +299,8 @@ namespace MyShop.data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { 1, "9dde8ed6-88e9-46dc-9230-0fd42dbd174b", "Member", "MEMBER" },
-                    { 2, "97109cdc-1181-41a8-b192-fa4b81d0a62f", "Admin", "ADMIN" }
+                    { 1, "ef2cfc84-ac5f-4180-a3b5-ce7d25651df5", "Member", "MEMBER" },
+                    { 2, "2a50cfce-8e45-479c-b3eb-77b7c2a73330", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -343,18 +343,18 @@ namespace MyShop.data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BasketItems_BasketId",
-                table: "BasketItems",
+                name: "IX_MyShopBasketItems_BasketId",
+                table: "MyShopBasketItems",
                 column: "BasketId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BasketItems_ProductId",
-                table: "BasketItems",
+                name: "IX_MyShopBasketItems_ProductId",
+                table: "MyShopBasketItems",
                 column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_OrderItem_OrderId",
-                table: "OrderItem",
+                name: "IX_MyShopOrderItems_OrderId",
+                table: "MyShopOrderItems",
                 column: "OrderId");
         }
 
@@ -377,25 +377,25 @@ namespace MyShop.data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "BasketItems");
+                name: "MyShopBasketItems");
 
             migrationBuilder.DropTable(
-                name: "OrderItem");
+                name: "MyShopOrderItems");
 
             migrationBuilder.DropTable(
-                name: "UserAddress");
+                name: "MyShopUserAddress");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "Baskets");
+                name: "MyShopBaskets");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "MyShopProducts");
 
             migrationBuilder.DropTable(
-                name: "Orders");
+                name: "MyShopOrders");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

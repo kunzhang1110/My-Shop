@@ -3,20 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyShop.Data;
 
 #nullable disable
 
-namespace MyShop.data.Migrations
+namespace MyShop.Migrations
 {
     [DbContext(typeof(MyShopContext))]
-    [Migration("20230612042040_InitialCreate")]
-    partial class InitialCreate
+    partial class MyShopContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,7 +125,7 @@ namespace MyShop.data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.Basket", b =>
+            modelBuilder.Entity("MyShop.Entities.Basket", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -147,10 +144,10 @@ namespace MyShop.data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Baskets");
+                    b.ToTable("MyShopBaskets");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.BasketItem", b =>
+            modelBuilder.Entity("MyShop.Entities.BasketItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -173,10 +170,10 @@ namespace MyShop.data.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("BasketItems");
+                    b.ToTable("MyShopBasketItems");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.OrderAggregate.Order", b =>
+            modelBuilder.Entity("MyShop.Entities.OrderAggregate.Order", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -204,10 +201,10 @@ namespace MyShop.data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orders");
+                    b.ToTable("MyShopOrders");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.OrderAggregate.OrderItem", b =>
+            modelBuilder.Entity("MyShop.Entities.OrderAggregate.OrderItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -228,10 +225,10 @@ namespace MyShop.data.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.ToTable("OrderItem");
+                    b.ToTable("MyShopOrderItems");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.Product", b =>
+            modelBuilder.Entity("MyShop.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -265,10 +262,10 @@ namespace MyShop.data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("MyShopProducts");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.Role", b =>
+            modelBuilder.Entity("MyShop.Entities.Role", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -301,20 +298,20 @@ namespace MyShop.data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "9dde8ed6-88e9-46dc-9230-0fd42dbd174b",
+                            ConcurrencyStamp = "ef2cfc84-ac5f-4180-a3b5-ce7d25651df5",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "97109cdc-1181-41a8-b192-fa4b81d0a62f",
+                            ConcurrencyStamp = "2a50cfce-8e45-479c-b3eb-77b7c2a73330",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.User", b =>
+            modelBuilder.Entity("MyShop.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -382,7 +379,7 @@ namespace MyShop.data.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.UserAddress", b =>
+            modelBuilder.Entity("MyShop.Entities.UserAddress", b =>
                 {
                     b.Property<int>("Id")
                         .HasColumnType("int");
@@ -410,12 +407,12 @@ namespace MyShop.data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserAddress");
+                    b.ToTable("MyShopUserAddress");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.Role", null)
+                    b.HasOne("MyShop.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -424,7 +421,7 @@ namespace MyShop.data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.User", null)
+                    b.HasOne("MyShop.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -433,7 +430,7 @@ namespace MyShop.data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.User", null)
+                    b.HasOne("MyShop.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -442,13 +439,13 @@ namespace MyShop.data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.Role", null)
+                    b.HasOne("MyShop.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyShopApi.Entities.User", null)
+                    b.HasOne("MyShop.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -457,22 +454,22 @@ namespace MyShop.data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.User", null)
+                    b.HasOne("MyShop.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.BasketItem", b =>
+            modelBuilder.Entity("MyShop.Entities.BasketItem", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.Basket", "Basket")
+                    b.HasOne("MyShop.Entities.Basket", "Basket")
                         .WithMany("Items")
                         .HasForeignKey("BasketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyShopApi.Entities.Product", "Product")
+                    b.HasOne("MyShop.Entities.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -483,9 +480,9 @@ namespace MyShop.data.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.OrderAggregate.Order", b =>
+            modelBuilder.Entity("MyShop.Entities.OrderAggregate.Order", b =>
                 {
-                    b.OwnsOne("MyShopApi.Entities.OrderAggregate.ShippingAddress", "ShippingAddress", b1 =>
+                    b.OwnsOne("MyShop.Entities.OrderAggregate.ShippingAddress", "ShippingAddress", b1 =>
                         {
                             b1.Property<int>("OrderId")
                                 .HasColumnType("int");
@@ -513,7 +510,7 @@ namespace MyShop.data.Migrations
 
                             b1.HasKey("OrderId");
 
-                            b1.ToTable("Orders");
+                            b1.ToTable("MyShopOrders");
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderId");
@@ -523,13 +520,13 @@ namespace MyShop.data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.OrderAggregate.OrderItem", b =>
+            modelBuilder.Entity("MyShop.Entities.OrderAggregate.OrderItem", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.OrderAggregate.Order", null)
+                    b.HasOne("MyShop.Entities.OrderAggregate.Order", null)
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId");
 
-                    b.OwnsOne("MyShopApi.Entities.OrderAggregate.ProductOrdered", "ItemOrdered", b1 =>
+                    b.OwnsOne("MyShop.Entities.OrderAggregate.ProductOrdered", "ItemOrdered", b1 =>
                         {
                             b1.Property<int>("OrderItemId")
                                 .HasColumnType("int");
@@ -545,7 +542,7 @@ namespace MyShop.data.Migrations
 
                             b1.HasKey("OrderItemId");
 
-                            b1.ToTable("OrderItem");
+                            b1.ToTable("MyShopOrderItems");
 
                             b1.WithOwner()
                                 .HasForeignKey("OrderItemId");
@@ -554,26 +551,26 @@ namespace MyShop.data.Migrations
                     b.Navigation("ItemOrdered");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.UserAddress", b =>
+            modelBuilder.Entity("MyShop.Entities.UserAddress", b =>
                 {
-                    b.HasOne("MyShopApi.Entities.User", null)
+                    b.HasOne("MyShop.Entities.User", null)
                         .WithOne("UserAddress")
-                        .HasForeignKey("MyShopApi.Entities.UserAddress", "Id")
+                        .HasForeignKey("MyShop.Entities.UserAddress", "Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.Basket", b =>
+            modelBuilder.Entity("MyShop.Entities.Basket", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.OrderAggregate.Order", b =>
+            modelBuilder.Entity("MyShop.Entities.OrderAggregate.Order", b =>
                 {
                     b.Navigation("OrderItems");
                 });
 
-            modelBuilder.Entity("MyShopApi.Entities.User", b =>
+            modelBuilder.Entity("MyShop.Entities.User", b =>
                 {
                     b.Navigation("UserAddress");
                 });
