@@ -1,9 +1,9 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import HomePage from "../../features/home/HomePage";
 import App from "../layout/App";
-import Catalog from "../../features/catalog/Catalog";
+import CatalogPage from "../../features/catalog/CatalogPage";
 import ProductDetails from "../../features/catalog/ProductDetails";
-import TestPage from "../../features/about/AboutPage";
+import TestPage from "../../features/test/TestPage";
 import ContactPage from "../../features/contact/ContactPage";
 import ServerError from "../errors/ServerError";
 import NotFound from "../errors/NotFound";
@@ -35,7 +35,7 @@ export const router = createBrowserRouter([
         children: [{ path: "inventory", element: <Inventory /> }],
       },
       { path: "", element: <HomePage /> },
-      { path: "catalog", element: <Catalog /> },
+      { path: "catalog", element: <CatalogPage /> },
       { path: "catalog/:id", element: <ProductDetails /> },
       { path: "contact", element: <ContactPage /> },
       { path: "test", element: <TestPage /> },

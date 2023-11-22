@@ -1,7 +1,6 @@
 import pandas as pd
 
-
-df = pd.read_excel("./products.xlsx", index_col=None)
+df = pd.read_excel("./input.xlsx", index_col=None)
 class_name = "Product"
 
 

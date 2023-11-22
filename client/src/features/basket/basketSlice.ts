@@ -1,4 +1,9 @@
-import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
+import {
+  PayloadAction,
+  createAsyncThunk,
+  createSlice,
+  isAnyOf,
+} from "@reduxjs/toolkit";
 import { Basket } from "../../app/models/basket";
 import agent from "../../app/api/agent";
 import { getCookie } from "../../app/util/util";
@@ -94,8 +99,9 @@ export const basketSlice = createSlice({
     );
     builder.addMatcher(
       isAnyOf(addBasketItemAsync.rejected, fetchBasketItemAsync.rejected),
-      (state, action) => {
-        console.log(action.payload);
+      (state, action: PayloadAction<any>) => {
+        if (action.payload.error.status)
+          console.log("User is not logged in or do not have a basket.");
         state.status = "idle";
       }
     );

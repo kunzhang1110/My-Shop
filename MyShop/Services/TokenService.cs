@@ -25,8 +25,8 @@ namespace MyShop.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Email, user.Email)
+                new (ClaimTypes.Name, user.UserName),
+                new (ClaimTypes.Email, user.Email)
             };
 
             var roles = await _userManager.GetRolesAsync(user);
