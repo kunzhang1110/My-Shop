@@ -32,7 +32,7 @@ on:
 
 permissions:
   contents: read
-  packages: write
+  packages: write # must have write permission
 
 jobs:
   build:

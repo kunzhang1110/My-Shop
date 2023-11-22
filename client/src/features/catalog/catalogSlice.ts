@@ -85,7 +85,7 @@ function initProductPrams() {
 export const catalogSlice = createSlice({
   name: "catalog",
   initialState: productsAdapter.getInitialState<CatalogState>({
-    //more initial state other than "products"
+    //more initial states other than "products"
     productsLoaded: false,
     filtersLoaded: false,
     status: "idle",
@@ -99,14 +99,14 @@ export const catalogSlice = createSlice({
       state.metaData = action.payload;
     },
     setPageNumber: (state, action) => {
-      state.productsLoaded = false; // trigger fetchProductsAsync())in Catalog
+      state.productsLoaded = false; // trigger fetchProductsAsync())in CatalogPage via useProduct()
       state.productParams = {
         ...state.productParams,
         ...action.payload,
       };
     },
     setProductsParams: (state, action) => {
-      state.productsLoaded = false; // trigger fetchProductsAsync())in Catalog
+      state.productsLoaded = false; // trigger fetchProductsAsync())in CatalogPage via useProduct()
       state.productParams = {
         ...state.productParams,
         ...action.payload,

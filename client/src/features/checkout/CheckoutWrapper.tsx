@@ -7,9 +7,7 @@ import { useAppDispatch } from "../../app/store/configureStore";
 import { setBasket } from "../basket/basketSlice";
 import LoadingComponent from "../../app/layout/LoadingComponent";
 
-const stripePromise = loadStripe(
-  "pk_test_51NG9IiDPpkprq16HS0zCBv0ZwAEo9jblhtOpSwer46roxdGbTYn6Ca44WpHf3e9xysW7AAiljQBIK8bVZaTNuxb000x2ognBxC"
-);
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY!);
 
 export default function CheckoutWrapper() {
   const dispatch = useAppDispatch();

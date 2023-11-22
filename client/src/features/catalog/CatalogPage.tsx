@@ -15,7 +15,7 @@ const sortOptions = [
   { value: "price", label: "Price - Low to high" },
 ];
 
-export default function Catalog() {
+export default function CatalogPage() {
   const { products, brands, types, filtersLoaded, metaData } = useProducts();
   const { productParams } = useAppSelector((state) => state.catalog);
   const dispatch = useAppDispatch();

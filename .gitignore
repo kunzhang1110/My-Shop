@@ -5,6 +5,7 @@
 
 # Custom files
 */appsettings.Development.json
+*/.env.development
 
 # User-specific files
 *.rsuser
